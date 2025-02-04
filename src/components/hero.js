@@ -23,12 +23,11 @@ const Hero = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:px-32 items-center text-center gap-6 py-20">
           <h1 className="font-display md:text-display-2xl text-display-lg">
-            Make <span className="italic">your home</span> an ode to joy
+          Votre <span className="italic">maison</span> rêvé <br/>  Nous le construisons pour vous.
           </h1>
           <p className="col-span-8 md:text-body-xl text-body-lg font-light text-neutral-700 max-w-[800px]">
-            We turn your empty house to a lovely home, making the compact spaces
-            with sapce saving furnitures. Making the unique tastes of yours into
-            reality!{" "}
+          Imaginez avoir le pouvoir de créer votre maison parfaite, votre villa luxueuse ou même un espace futuriste – exactement comme vous l'avez toujours imaginé.
+           Chez N DESIGN, nous spécialisons dans la transformation de vos désirs en modèles 3D époustouflants, et nous les construisons également dans la vraie vie.{" "}
           </p>
         </div>
       </div>

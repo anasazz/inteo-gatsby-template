@@ -1,7 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-
 import Eyebrow from "./eyebrow";
 import AwardBadge from "../images/award-badge.svg";
 
@@ -19,36 +18,36 @@ const About = () => {
       }
     }
   `);
+
   return (
     <div id="#about">
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-12 grid-cols-1 lg:gap-8 gap-20 lg:py-32 py-12 items-center">
           <div className="lg:col-span-6 flex flex-col gap-6">
-            <Eyebrow label="ABOUT US" />
+            <Eyebrow label="À PROPOS DE NOUS" />
             <h2 className="font-display md:text-display-xl text-display-md font-normal pb-4">
-              We help to bring your <span className="italic">dream home</span>{" "}
-              to reality
+              Nous aidons à transformer votre{" "}
+              <span className="italic">maison de rêve</span> en réalité
             </h2>
             <p className="md:text-body-lg text-body-md font-light text-neutral-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
-              fringilla dui amet faucibus nam. Erat id laoreet posuere etiam
-              morbi.
+              Depuis plus de dix ans, nous concevons des espaces uniques qui
+              reflètent vos aspirations et votre style de vie. Notre équipe
+              passionnée allie innovation et savoir-faire pour vous offrir des
+              solutions sur mesure.
             </p>
             <p className="md:text-body-lg text-body-md font-light text-neutral-700">
-              Tempor dolor elementum tellus non ipsum faucibus. Justo, magna
-              mauris posuere auctor justo. Habitant proin aliquet volutpat leo
-              ultricies. Dui blandit eget vitae turpis ultrices aliquet nunc.
-              Faucibus sit odio bibendum lobortis diam.
+              Que ce soit pour une maison familiale, une villa luxueuse ou un
+              espace moderne, nous prenons en charge chaque étape du processus,
+              de la conception à la réalisation finale. Notre engagement envers
+              la qualité et l'excellence garantit des résultats durables et
+              exceptionnels.
             </p>
           </div>
           <div className="lg:col-span-6 flex flex-col gap-8 relative">
-            <GatsbyImage
-              image={getImage(data.aboutimage)}
-              alt="Interior Design"
-            />
+            <GatsbyImage image={getImage(data.aboutimage)} alt="Conception intérieure" />
             <img
               src={AwardBadge}
-              alt="Award Badge"
+              alt="Badge de récompense"
               className="absolute left-[42%] -top-14"
             />
           </div>
@@ -57,4 +56,5 @@ const About = () => {
     </div>
   );
 };
+
 export default About;

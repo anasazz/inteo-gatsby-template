@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-scroll";
 
-import Logo from "../images/logos/logo-dark.svg";
+import Logo from "../images/logos/logo-no-background.svg";
 import Button from "./button";
 
 const Header = () => {
   const navigation = [
-    { name: "About", href: "#about" },
+    { name: "À propos", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Our Work", href: "#works" },
+    { name: "Nos réalisations", href: "#works" },
   ];
   return (
     <header>
@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex py-5 justify-between items-center">
           <div className="flex flex-row gap-8 items-center">
             <Link to="/">
-              <img className="h-8 w-auto" src={Logo} alt="Logo" />
+              <img className="h-10 w-auto" src={Logo} alt="Logo" />
             </Link>
           </div>
           <div className="flex flex-row gap-6">
@@ -34,7 +34,7 @@ const Header = () => {
                 </Link>
               ))}
             </div>
-            <Button label="CONTACT US" link="#" />
+            <Button label="NOUS CONTACTER" link="#" />
           </div>
         </div>
       </div>

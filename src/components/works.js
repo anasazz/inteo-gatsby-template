@@ -34,10 +34,9 @@ const Works = () => {
           <div className="grid xl:grid-cols-12 grid-cols-1 xl:gap-8 gap-10 items-center">
             <div className="xl:col-span-6 lg:col-span-8 flex flex-col xl:gap-24 md:gap-20 gap-10">
               <div className="flex flex-col gap-6">
-                <Eyebrow label="RECENT WORKS" />
-                <h3 className="font-display md:text-display-xl text-display-md font-normal pb-4">
-                  Some of <span className="italic">our crafts</span> made with
-                  love
+                <Eyebrow label="RÉALISATIONS RÉCENTES " />
+                <h3 className="font-display md:text-display-xl text-display-sm font-normal pb-4">
+                  Certaines de <span className="italic ">nos réalisations</span> faites avec amour
                 </h3>
               </div>
               {data.allWorksJson.nodes.slice(0, 1).map((node) => (

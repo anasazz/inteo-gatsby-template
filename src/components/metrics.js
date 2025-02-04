@@ -11,23 +11,23 @@ const Metrics = () => {
                 100%
               </p>
               <p className="text-body-sm font-normal tracking-wider pt-2">
-                SATISFITATION <br></br>CLIENTS
+                SATISFACTION <br></br>DES CLIENTS
               </p>
             </div>
             <div className="md:col-span-4 flex xl:flex-row md:flex-col flex-row xl:gap-4 md:gap-0 gap-4 xl:items-center md:items-start items-center">
               <p className="font-display md:text-display-xl text-display-lg font-normal">
-                250
+                25
               </p>
               <p className="text-body-sm font-normal tracking-wider pt-2">
-                EMPLOYEES ON <br></br>WORLDWIDE
+                EMPLOYÉS <br></br> AU MAROC
               </p>
             </div>
             <div className="md:col-span-4 flex xl:flex-row md:flex-col flex-row xl:gap-4 md:gap-0 gap-4 xl:items-center md:items-start items-center">
               <p className="font-display md:text-display-xl text-display-lg font-normal">
-                3469
+                65
               </p>
               <p className="text-body-sm font-normal tracking-wider pt-2">
-                PROJECTS COMPLETED <br></br>ON 60 COUNTRIES
+                PROJETS RÉALISÉS <br></br>DANS 10 VILLES
               </p>
             </div>
           </div>
@@ -39,4 +39,5 @@ const Metrics = () => {
     </div>
   );
 };
+
 export default Metrics;

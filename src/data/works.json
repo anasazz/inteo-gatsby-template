@@ -1,17 +1,17 @@
 [
   {
     "image": "../images/works/work-1.png",
-    "title": "Villa Furnishing & Interior",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus fringilla dui amet faucibus nam."
+    "title": "Aménagement et intérieur de villa",
+    "description": "Transformez votre villa en un havre de luxe et de confort avec notre service d'aménagement intérieur sur mesure. De la conception à la réalisation, chaque détail est pensé pour refléter votre style unique. "
   },
   {
     "image": "../images/works/work-2.png",
-    "title": "Luxury Hotel Renovation",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus fringilla dui amet faucibus nam."
+    "title": "Rénovation d'un hôtel de luxe",
+    "description": "Redonnez une seconde vie à votre établissement avec notre expertise en rénovation hôtelière. Du design moderne aux finitions élégantes, nous créons des espaces qui impressionnent vos clients."
   },
   {
     "image": "../images/works/work-3.png",
-    "title": "Residence Swimming Pool",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus fringilla dui amet faucibus nam."
+    "title": "Piscine résidentielle",
+    "description": "Ajoutez une touche de sophistication à votre propriété avec une piscine conçue et construite selon vos spécifications. Que ce soit un espace détente ou une zone de divertissement, nous vous offrons des solutions adaptées à vos besoins."
   }
 ]
