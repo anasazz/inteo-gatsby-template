@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'aframe';
-import { Entity, Scene } from 'aframe-react';
-import 'aframe-extras';
 import gelatoImage from '../images/360/gelato.jpeg';
 import gelatoImage2 from '../images/360/gelato2.jpeg';
 import gelatoImage3 from '../images/360/gelato5.jpeg';
@@ -22,6 +19,12 @@ const VRScene = () => {
     ]
   });
   const [selectedArrow, setSelectedArrow] = useState(null);
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  // Check if the code is running in the browser
+  useEffect(() => {
+    setIsBrowser(typeof window !== 'undefined');
+  }, []);
 
   // Add arrow function
   const addArrow = (image) => {
@@ -94,91 +97,17 @@ const VRScene = () => {
     }
   }, []);
 
+  // Dynamically import A-Frame and aframe-react only in the browser
+  if (!isBrowser) {
+    return null; // Return nothing during the static build
+  }
+
+  const { Scene, Entity } = require('aframe-react');
+  require('aframe');
+  require('aframe-extras');
+
   return (
     <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-      {/* UI for Arrow Controls */}
-      {/* <div
-        style={{
-          position: 'absolute',
-          top: '20px',
-          left: '20px',
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          color: 'white',
-          padding: '10px',
-          borderRadius: '5px',
-          zIndex: 1000
-        }}
-      >
-        <h3>Arrow Controls</h3>
-        <button onClick={() => addArrow(currentScene)}>Add Arrow</button>
-        <button onClick={removeArrow}>Remove Arrow</button>
-
-        {selectedArrow && (
-          <div style={{ marginTop: '10px' }}>
-            <h4>Arrow {selectedArrow.id} Live Location</h4>
-            <p>
-              Position: {JSON.stringify(selectedArrow.position)}<br />
-              Rotation: {JSON.stringify(selectedArrow.rotation)}
-            </p>
-            <div>
-              <label>Position (x, y, z):</label>
-              <input
-                type="number"
-                value={selectedArrow.position.x}
-                onChange={(e) => {
-                  const newPosition = { ...selectedArrow.position, x: e.target.value };
-                  updateArrowPositionAndRotation(newPosition, selectedArrow.rotation);
-                }}
-              />
-              <input
-                type="number"
-                value={selectedArrow.position.y}
-                onChange={(e) => {
-                  const newPosition = { ...selectedArrow.position, y: e.target.value };
-                  updateArrowPositionAndRotation(newPosition, selectedArrow.rotation);
-                }}
-              />
-              <input
-                type="number"
-                value={selectedArrow.position.z}
-                onChange={(e) => {
-                  const newPosition = { ...selectedArrow.position, z: e.target.value };
-                  updateArrowPositionAndRotation(newPosition, selectedArrow.rotation);
-                }}
-              />
-            </div>
-            <div>
-              <label>Rotation (x, y, z):</label>
-              <input
-                type="number"
-                value={selectedArrow.rotation.x}
-                onChange={(e) => {
-                  const newRotation = { ...selectedArrow.rotation, x: e.target.value };
-                  updateArrowPositionAndRotation(selectedArrow.position, newRotation);
-                }}
-              />
-              <input
-                type="number"
-                value={selectedArrow.rotation.y}
-                onChange={(e) => {
-                  const newRotation = { ...selectedArrow.rotation, y: e.target.value };
-                  updateArrowPositionAndRotation(selectedArrow.position, newRotation);
-                }}
-              />
-              <input
-                type="number"
-                value={selectedArrow.rotation.z}
-                onChange={(e) => {
-                  const newRotation = { ...selectedArrow.rotation, z: e.target.value };
-                  updateArrowPositionAndRotation(selectedArrow.position, newRotation);
-                }}
-              />
-            </div>
-            <button onClick={() => copyArrowLocation(selectedArrow)}>Copy Location</button>
-          </div>
-        )}
-      </div> */}
-
       <Scene embedded style={{ width: '100%', height: '100%' }}>
         {/* Sky background */}
         <Entity primitive="a-sky" src={currentScene} />
@@ -209,7 +138,6 @@ const VRScene = () => {
             rotation={arrow.rotation}
             grabbable
             material={{ transparent: true, opacity: 1 }} // Add this line to make the background transparent
-
             draggable
             events={{
               click: () => handleArrowClick(arrow.targetScene),
