@@ -12,8 +12,9 @@ import Works from "../components/works";
 const IndexPage = () => (
   <Layout>
     <Seo />
+    
     <Hero />
-    {/* <Awards /> */}
+    <Awards />
     <About />
     <Metrics />
     <Services />

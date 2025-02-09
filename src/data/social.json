@@ -2,21 +2,18 @@
   {
     "name": "Instagram",
     "icon": "../images/social-icons/instagram.svg",
-    "href": "#"
+    "href": "https://www.instagram.com/ndesign_ma/"
   },
   {
     "name": "Facebook",
     "icon": "../images/social-icons/facebook.svg",
-    "href": "#"
+    "href": "https://www.facebook.com/people/NDesignma/61572939956982/"
   },
+
   {
-    "name": "YouTube",
-    "icon": "../images/social-icons/youtube.svg",
-    "href": "#"
-  },
-  {
-    "name": "Twitter",
-    "icon": "../images/social-icons/twitter.svg",
-    "href": "#"
+    "name": "Tiktok",
+    "icon": "../images/social-icons/tiktok.svg",
+    "href": "https://www.tiktok.com/@ndesign.ma"
   }
+
 ]

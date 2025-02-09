@@ -24,7 +24,7 @@ const Awards = () => {
         <div className="flex flex-row md:items-center items-start self-auto gap-5 py-6">
           <div className="flex flex-row items-center self-auto md:gap-5 gap-2">
             <p className="font-display text-display-xs italic text-white opacity-50 vertical-rl -rotate-180">
-              Awards
+              Clients
             </p>
             <hr className="md:w-16 w-6  text-white opacity-50"></hr>
           </div>

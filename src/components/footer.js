@@ -37,10 +37,10 @@ const Footer = () => {
           <div className="lg:col-span-6 flex flex-col gap-8 xl:pl-80 lg:pl-48">
             <div className="flex flex-col gap-2">
               <p className="text-display-xs font-display font-normal">
-                RABAT, New York
+                RABAT
               </p>
               <p className="text-body-sm font-light text-neutral-900">
-                962 Fifth Avenue Str, 3ème étage - Building Trump NY 10006, États-Unis.
+                962 Fifth Avenue Str, 3ème étage 
               </p>
             </div>
             <div className="flex flex-col gap-2">
@@ -49,7 +49,7 @@ const Footer = () => {
               </p>
               <a
                 className="text-display-xs font-display font-light text-primary-600"
-                href="mailto:hello@landify.design">
+                href="mailto:contact@ndesign.ma">
                 contact@ndesign.ma
               </a>
             </div>
@@ -59,8 +59,8 @@ const Footer = () => {
               </p>
               <a
                 className="text-display-xs font-display font-light text-primary-600"
-                href="tel:+21261250859">
-                +212(6)125-08-59
+                href="tel:+212671570908">
+                +212(6)71-57-0908
               </a>
             </div>
           </div>
