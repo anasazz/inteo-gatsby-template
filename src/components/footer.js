@@ -26,7 +26,7 @@ const Footer = () => {
         <div className="grid lg:grid-cols-12 grid-cols-1 lg:gap-8 gap-12">
           <div className="lg:col-span-6 md:pr-24">
             <h3 className="font-display md:text-display-lg text-display-sm font-normal pb-4">
-              Démarrons votre maison de rêve avec nous
+              Démarrons votre espace de rêve avec nous
             </h3>
             <a
               href="/"
@@ -59,8 +59,8 @@ const Footer = () => {
               </p>
               <a
                 className="text-display-xs font-display font-light text-primary-600"
-                href="tel:+212671570908">
-                +212(6)71-57-0908
+                href="tel:+212690090075">
+                +212(6)900-900-75
               </a>
             </div>
           </div>
@@ -75,8 +75,8 @@ const Footer = () => {
           <div className="flex lg:flex-row flex-col lg:items-center md:gap-6 gap-4">
             <div className="flex flex-row items-center opacity-70">
               <p className="text-body-sm font-semibold tracking-widest text-neutral-700 pr-4">
-                CONNECTEZ-VOUS
-              </p>
+              CONTACTEZ-NOUS
+                            </p>
               <hr className="w-16 text-neutral-700"></hr>
             </div>
             <div className="flex flex-row items-center gap-6">

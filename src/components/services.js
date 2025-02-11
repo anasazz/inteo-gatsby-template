@@ -16,7 +16,7 @@ const Services = () => {
           <Eyebrow label="NOS SERVICES" />
           <h2 className="font-display md:text-display-xl text-display-md pt-5">
             Nous offrons les <span className="italic">meilleures solutions</span>{" "}
-            pour votre maison de rêve
+            pour votre espace de rêve
           </h2>
         </div>
       </div>

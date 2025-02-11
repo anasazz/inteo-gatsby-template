@@ -29,7 +29,7 @@ const Hero = () => {
             Votre <span className="italic">maison</span> rêvée <br /> Nous la construisons pour vous.
           </h1>
           <p className="col-span-8 md:text-body-xl text-body-lg font-light text-neutral-700 max-w-[800px]">
-            Imaginez avoir le pouvoir de créer votre maison parfaite, votre villa luxueuse ou même un espace futuriste – exactement comme vous l'avez toujours imaginé.
+            Imaginez avoir le pouvoir de créer votre espace parfaite, votre villa luxueuse ou même un espace futuriste – exactement comme vous l'avez toujours imaginé.
             Chez N DESIGN, nous nous spécialisons dans la transformation de vos désirs en modèles 3D époustouflants, et nous les construisons également dans la vraie vie.{" "}
           </p>
         </div>
