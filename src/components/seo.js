@@ -40,7 +40,7 @@ function Seo({ lang, meta, title, description, image, url }) {
         },
         {
           name: `keywords`,
-          content: `landing page, uikit, open source ui kit, landify ui kit, free uikit, figma uikit, aravinddesign, free website ui kit, free figma website ui kit, free landing page ui kit, landing page ui kit for figma, website ui kit for figma`,
+          content: `interior design, modern interiors, home decor, luxury interior design, Moroccan interior design, ndesign.ma, home renovation, office interiors, interior decoration, contemporary design, custom furniture, residential interiors, commercial interiors, space planning, architecture and design, interior styling, home makeover`
         },
         {
           property: `og:image`,

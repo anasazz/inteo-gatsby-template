@@ -27,18 +27,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Landify UI`,
-        short_name: `Landify UI`,
-        start_url: `/`,
-        background_color: `#7C3AED`,
-        theme_color: `#7C3AED`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // Replace with your favicon (This path is relative to the root of the site)
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [

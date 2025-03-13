@@ -1,0 +1,45 @@
+import bpy
+import os
+
+
+# ANSI escape codes for colors
+class Colors:
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    BLUE = '\033[94m'
+    RED = '\033[91m'
+    RESET = '\033[0m'
+
+# Set the output path to the desktop
+output_path = os.path.join(os.path.expanduser("~"), "Desktop")
+bpy.context.scene.render.filepath = output_path
+
+# Ensure the output format is set to an image format (e.g., PNG)
+bpy.context.scene.render.image_settings.file_format = 'PNG'
+
+# Log the start of the process
+print(Colors.GREEN + "Starting rendering process for all cameras..." + Colors.RESET)
+
+# Loop through all objects in the scene
+for obj in bpy.context.scene.objects:
+    # Check if the object is a camera
+    if obj.type == 'CAMERA':
+        # Log the current camera being used
+        print(Colors.YELLOW + f"Rendering with camera: {obj.name}" + Colors.RESET)
+        
+        # Set the current camera as the active camera
+        bpy.context.scene.camera = obj
+        
+        # Set the output file name based on the camera's name
+        output_file = os.path.join(output_path, f"{obj.name}_360.png")
+        bpy.context.scene.render.filepath = output_file
+        
+        # Render the image
+        bpy.ops.render.render(write_still=True)
+        
+        # Log the completion of rendering for this camera
+        print(Colors.BLUE + f"Rendering completed for camera: {obj.name}" + Colors.RESET)
+        print(Colors.BLUE + f"Saved to: {output_file}" + Colors.RESET)
+
+# Log the completion of the entire process
+print(Colors.GREEN + "Rendering completed for all cameras!" + Colors.RESET)
