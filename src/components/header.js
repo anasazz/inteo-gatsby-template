@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex py-5 justify-between items-center">
           <div className="flex flex-row gap-8 items-center">
             <Link to="/">
-              <img className="h-10 w-auto" src={Logo} alt="Logo" />
+              <img className="h-14 w-auto" src={Logo} alt="Logo" />
             </Link>
           </div>
           <div className="flex flex-row gap-6">

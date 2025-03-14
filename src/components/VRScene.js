@@ -1,166 +1,114 @@
 import React, { useState, useEffect } from 'react';
-import gelatoImage from '../images/360/gelato.jpeg';
-import gelatoImage2 from '../images/360/gelato2.jpeg';
-import gelatoImage3 from '../images/360/gelato5.jpeg';
-import arrowTexture from '../images/360/arrow.png';
+import { assets } from '../assets';
 
-const VRScene = () => {
-  const [currentScene, setCurrentScene] = useState(gelatoImage);
-  const [arrows, setArrows] = useState({
-    [gelatoImage]: [
-      { id: 1, position: { x: 1, y: -3, z: -4 }, rotation: { x: -90, y: -28, z: 25 }, targetScene: gelatoImage2 }
-    ],
-    [gelatoImage2]: [
-      { id: 2, position: { x: 2, y: -2, z: 3 }, rotation: { x: -90, y: 0, z: 0 }, targetScene: gelatoImage3 },
-      { id: 3, position: { x: -2, y: -3, z: -5 }, rotation: { x: -90, y: 180, z: 5 }, targetScene: gelatoImage }
-    ],
-    [gelatoImage3]: [
-      { id: 4, position: { x: 0, y: -4, z: 5 }, rotation: { x: -90, y: 180, z: 25 }, targetScene: gelatoImage2 }
-    ]
-  });
-  const [selectedArrow, setSelectedArrow] = useState(null);
-  const [isBrowser, setIsBrowser] = useState(false);
+const sceneKeys = Object.keys(assets);
 
-  // Check if the code is running in the browser
+const VRScene = ({ selectedScene }) => {
+  const [sceneSrcs, setSceneSrcs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadErrors, setLoadErrors] = useState([]); // Track errors
+  const [selectedImage, setSelectedImage] = useState(null); // Track selected image
+
   useEffect(() => {
-    setIsBrowser(typeof window !== 'undefined');
-  }, []);
-
-  // Add arrow function
-  const addArrow = (image) => {
-    const newArrow = {
-      id: Date.now(),
-      position: { x: 0, y: 0.01, z: -3 },
-      rotation: { x: -90, y: 0, z: 0 },
-      targetScene: image
-    };
-    setArrows((prevArrows) => ({
-      ...prevArrows,
-      [image]: [...prevArrows[image], newArrow]
-    }));
-  };
-
-  // Remove arrow function
-  const removeArrow = () => {
-    if (selectedArrow) {
-      const updatedArrows = arrows[currentScene].filter((arrow) => arrow.id !== selectedArrow.id);
-      setArrows((prevArrows) => ({
-        ...prevArrows,
-        [currentScene]: updatedArrows
-      }));
-      setSelectedArrow(null);
+    if (selectedScene) {
+      console.log(`Selected scene: ${selectedScene}`);
+      loadScene(selectedScene);
     }
-  };
+  }, [selectedScene]);
 
-  // Handle arrow click to switch scenes
-  const handleArrowClick = (targetScene) => {
-    setCurrentScene(targetScene);
-  };
+  const loadScene = async (sceneKey) => {
+    console.log(`Loading scene: ${sceneKey}`);
+    setLoading(true);
+    setLoadErrors([]); // Reset errors on new scene load
+    try {
+      const sceneAssets = assets[sceneKey];
+      console.log(`Assets for ${sceneKey}:`, sceneAssets);
 
-  // Copy the location of the selected arrow to clipboard
-  const copyArrowLocation = (arrow) => {
-    const location = {
-      position: arrow.position,
-      rotation: arrow.rotation
-    };
-    navigator.clipboard.writeText(JSON.stringify(location));
-    alert('Arrow location copied to clipboard!');
-  };
-
-  // Update selected arrow's position and rotation
-  const updateArrowPositionAndRotation = (position, rotation) => {
-    if (selectedArrow) {
-      const updatedArrows = arrows[currentScene].map((arrow) =>
-        arrow.id === selectedArrow.id ? { ...arrow, position, rotation } : arrow
+      const loadedAssets = await Promise.all(
+        sceneAssets.map(async (asset) => {
+          console.log(`Loading asset: ${asset} for scene ${sceneKey}`);
+          try {
+            const module = await import(`../images/3602/${sceneKey}/${asset}`); // Dynamic path based on selected scene
+            console.log(`Successfully loaded: ${asset}`);
+            return module.default;
+          } catch (error) {
+            console.error(`Error loading asset ${asset}:`, error);
+            setLoadErrors((prev) => [...prev, asset]); // Add to error list
+            return null; // Return null for failed assets
+          }
+        })
       );
-      setArrows((prevArrows) => ({
-        ...prevArrows,
-        [currentScene]: updatedArrows
-      }));
+
+      setSceneSrcs(loadedAssets.filter(Boolean)); // Filter out failed images
+      console.log(`Loaded assets for ${sceneKey}:`, loadedAssets);
+    } catch (error) {
+      console.error("Error loading scene images:", error);
+    } finally {
+      setLoading(false);
+      console.log("Loading complete for scene:", sceneKey);
     }
   };
 
-  // Persist arrows on scene change (useEffect for persistence)
-  useEffect(() => {
-    const saveArrowsToLocalStorage = () => {
-      localStorage.setItem('arrowsData', JSON.stringify(arrows)); // Save the arrow positions and rotations
-    };
+  const handleImageClick = (src) => {
+    setSelectedImage(src); // Update selected image when clicked
+  };
 
-    saveArrowsToLocalStorage();
-  }, [arrows]);
-
-  // Load arrows from localStorage when the component mounts (to restore positions and rotations)
-  useEffect(() => {
-    const loadedArrows = localStorage.getItem('arrowsData');
-    if (loadedArrows) {
-      setArrows(JSON.parse(loadedArrows)); // Set arrows from localStorage
-    }
-  }, []);
-
-  // Dynamically import A-Frame and aframe-react only in the browser
-  if (!isBrowser) {
-    return null; // Return nothing during the static build
+  if (loading) {
+    return (
+      <div className="w-full h-[700px] flex items-center justify-center">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   const { Scene, Entity } = require('aframe-react');
-  require('aframe');
-  require('aframe-extras');
 
   return (
     <div style={{ width: '100%', height: '700px', position: 'relative' }}>
+      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-4">
+        {sceneKeys.map((scene) => (
+          <button
+            key={scene}
+            onClick={() => loadScene(scene)}
+            className="px-4 py-2 bg-gray-700 text-white rounded"
+          >
+            {scene}
+          </button>
+        ))}
+      </div>
+
+      {/* VR Scene */}
       <Scene embedded style={{ width: '100%', height: '100%' }}>
-        {/* Sky background */}
-        <Entity primitive="a-sky" src={currentScene} />
-
-        {/* Camera with cursor */}
+        <Entity primitive="a-sky" src={selectedImage || sceneSrcs[0]} />
         <Entity primitive="a-camera" position={{ x: 0, y: 1.6, z: 0 }}>
-          <Entity
-            primitive="a-cursor"
-            animation__click={{
-              property: 'scale',
-              startEvents: 'click',
-              from: '0.1 0.1 0.1',
-              to: '1 1 1',
-              dur: 150
-            }}
-          />
+          <Entity primitive="a-cursor" animation__click={{ property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150 }} />
         </Entity>
+      </Scene>
 
-        {/* Render arrows based on the current scene */}
-        {arrows[currentScene]?.map((arrow) => (
-          <Entity
-            key={arrow.id}
-            primitive="a-plane"
-            src={arrowTexture} // Transparent arrow texture
-            width="0.5"
-            height="0.5"
-            position={arrow.position}
-            rotation={arrow.rotation}
-            grabbable
-            material={{ transparent: true, opacity: 1 }} // Add this line to make the background transparent
-            draggable
-            events={{
-              click: () => handleArrowClick(arrow.targetScene),
-              mouseenter: () => {
-                const arrowEntity = document.querySelector(`[data-arrow-id="${arrow.id}"]`);
-                arrowEntity.setAttribute('color', 'yellow');
-                setSelectedArrow({
-                  id: arrow.id,
-                  position: arrowEntity.getAttribute('position'),
-                  rotation: arrowEntity.getAttribute('rotation')
-                });
-              },
-              mouseleave: () => {
-                const arrowEntity = document.querySelector(`[data-arrow-id="${arrow.id}"]`);
-                arrowEntity.setAttribute('color', 'white');
-              }
-            }}
-            data-arrow-id={arrow.id} // Add a custom attribute for easy selection
+      {/* Preview images for the selected scene */}
+      <div className="absolute top-5 left-1/2 transform -translate-x-1/2 flex gap-4">
+        {sceneSrcs.map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            alt={`Scene Image ${index}`}
+            className="w-32 h-32 object-cover border-2 border-white cursor-pointer"
+            onClick={() => handleImageClick(src)} // Click to change the scene image
           />
         ))}
+      </div>
 
-        <Entity light={{ type: 'point', intensity: 1.5 }} position={{ x: 2, y: 4, z: -3 }} />
-      </Scene>
+      {/* Display load errors if any */}
+      {loadErrors.length > 0 && (
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-red-500">
+          <p>Error loading the following images:</p>
+          <ul>
+            {loadErrors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

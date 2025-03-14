@@ -1,2 +1,8 @@
 import "./src/styles/global.css";
-import 'aframe';
+
+// gatsby-browser.js
+
+if (typeof window !== 'undefined' && !window.AFRAME) {
+    require('aframe');
+  }
+  
