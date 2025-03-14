@@ -33,8 +33,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      display: ["Aboreto", "serif"],
-      body: ["Outfit", "sans-serif"],
+      display: ["Emblema One", "system-ui"],
+      body: ["Playfair Display", "serif"],
     },
     fontSize: {
       "display-2xl": [
