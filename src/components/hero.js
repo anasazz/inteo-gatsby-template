@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CtaButton from "../images/cta-button.svg";
 import VRScene from "./VRScene";
 import { assets } from "../assets";
-// import VRScene from "./VRScene";
 
-
-
-const places = Object.keys(assets); // Get keys of the assets as the first selection options
+const places = Object.keys(assets);
 
 const Hero = () => {
-  const [selectedScene, setSelectedScene] = useState(null);
+  const [selectedScene, setSelectedScene] = useState(places.length > 0 ? places[0] : null);
   const [selectedAsset, setSelectedAsset] = useState(null);
+
+  // If the places list changes (unlikely but for completeness)
+  useEffect(() => {
+    if (places.length > 0 && !places.includes(selectedScene)) {
+      setSelectedScene(places[0]);
+    }
+  }, [places]);
+
+  const handleSceneSelect = (place, e) => {
+    // Prevent default button behavior to avoid page scrolling
+    e.preventDefault();
+    e.stopPropagation();
+    
+    setSelectedScene(place);
+    setSelectedAsset(null);
+  };
 
   return (
     <div>
       <div className="container mx-auto">
         <div className="flex flex-col text-center gap-4 py-20 bg-red-400">
           <h1 className="text-12xl md:text-display-xl sm:text-display-sm font-semibold ">
-            Nous concevons votre <br />
+            Nous concevons votre Espace <br />
             <span className="text-gray-600 text-2xl font-light">
               Et nous la bâtissons pour vous.
             </span>
@@ -30,36 +43,19 @@ const Hero = () => {
         {places.map((place, index) => (
           <button
             key={index}
-            className="px-6 py-2 rounded-md bg-gray-200 text-black border-2 hover:border-gray-600 
-                      bg-neutral-10000 hover:bg-neutral-500 hover:text-white"
-            onClick={() => {
-              setSelectedScene(place);
-              setSelectedAsset(null); // Reset asset selection when scene changes
-            }}
+            className={`px-6 py-2 rounded-md border-2 hover:border-gray-600 
+                      hover:bg-neutral-500 hover:text-white ${
+                      selectedScene === place 
+                        ? 'bg-neutral-500 text-white border-blue-600' 
+                        : 'bg-gray-200 text-black bg-neutral-10000'
+                      }`}
+            onClick={(e) => handleSceneSelect(place, e)}
+            type="button" // Explicitly set type to button to prevent form submission behavior
           >
             {place}
           </button>
         ))}
       </div>
-
-      {/* Display Nested Asset Selection */}
-      {/* {selectedScene && (
-        <div className="my-4">
-          <h3 className="text-lg font-semibold">Select an image from {selectedScene}</h3>
-          <div className="flex flex-wrap justify-center gap-3 my-6">
-            {assets[selectedScene].map((asset, index) => (
-              <button
-                key={index}
-                className="px-6 py-2 rounded-md bg-gray-200 text-black border-2 hover:border-gray-600 
-                          bg-neutral-10000 hover:bg-neutral-500 hover:text-white"
-                onClick={() => setSelectedAsset(asset)}
-              >
-                {asset}
-              </button>
-            ))}
-          </div>
-        </div>
-      )} */}
 
       {/* Display the selected VR Scene */}
       <div className="relative">
