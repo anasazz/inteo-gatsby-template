@@ -128,8 +128,20 @@ const VRScene = ({ selectedScene }) => {
 
       {/* VR Scene */}
       <Scene embedded style={{ width: '100%', height: '100%' }}>
-        <Entity primitive="a-sky" src={selectedImage || sceneSrcs[0]} />
-        <Entity primitive="a-camera" position={{ x: 0, y: 1.6, z: 0 }}>
+        {/* Rotating sky animation with slow, continuous rotation */}
+        <Entity
+          primitive="a-sky"
+          src={selectedImage || sceneSrcs[0]}
+
+          animation="property: rotation; to: 0 360 0; dur: 60000; loop: true" // 1 minute to complete a full rotation
+        />
+
+        {/* Camera animation that moves slowly */}
+        <Entity
+          primitive="a-camera"
+          position={{ x: 0, y: 1.6, z: 0 }}
+          animation="property: position; to: 5 1.6 0; dur: 60000; easing: linear; loop: true" // Camera moves slowly in a loop
+        >
           <Entity primitive="a-cursor" animation__click={{ property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150 }} />
         </Entity>
       </Scene>
