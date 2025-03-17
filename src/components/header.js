@@ -34,7 +34,7 @@ const Header = () => {
                 </Link>
               ))}
             </div>
-            <Button label="NOUS CONTACTER" link="#" />
+            <Button className="bg-[#293040] rounded-lg" label="NOUS CONTACTER" link="#" />
           </div>
         </div>
       </div>

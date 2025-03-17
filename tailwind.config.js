@@ -20,9 +20,9 @@ module.exports = {
       white: "#FFFFFF",
       black: "#000000",
       primary: {
-        600: "#996830",
-        300: "#C4A386",
-        100: "#E6D8CC",
+        600: "#293040",
+        300: "#293040",
+        100: "#293040",
       },
       neutral: {
         900: "#2C2C2C",
@@ -33,8 +33,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      display: ["Emblema One", "system-ui"],
-      body: ["Playfair Display", "serif"],
+      display: ["Montserrat", "serif"],
+      body: ["Montserrat", "serif"],
     },
     fontSize: {
       "display-2xl": [

@@ -142,7 +142,7 @@ const VRScene = ({ selectedScene }) => {
             src={src}
             alt={`Scene Image ${index}`}
             className={`w-24 h-24 object-cover border-2 rounded-lg cursor-pointer transition-all ${
-              selectedImage === src ? 'border-white border-4' : 'border-slate-100 hover:border-gray-300'
+              selectedImage === src ? 'border-yellow-500 border-4' : ' border-white hover:border-gray-300'
             }`}
             onClick={() => handleImageClick(src)}
           />

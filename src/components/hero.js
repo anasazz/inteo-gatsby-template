@@ -43,10 +43,11 @@ const Hero = () => {
         {places.map((place, index) => (
           <button
             key={index}
-            className={`px-6 py-2 rounded-md border-2 hover:border-gray-600 
+            className={`px-6 py-2 rounded-full border-2 hover:border-gray-600 
+              capitalize
                       hover:bg-neutral-500 hover:text-white ${
                       selectedScene === place 
-                        ? 'bg-neutral-500 text-white border-blue-600' 
+                        ? 'bg-[#293040] text-white border-blue-600' 
                         : 'bg-gray-200 text-black bg-neutral-10000'
                       }`}
             onClick={(e) => handleSceneSelect(place, e)}

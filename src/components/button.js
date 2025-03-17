@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Button = ({ label, link, size, icon }) => (
   <a
-    className={`button flex gap-1 items-center justify-center bg-primary-600 text-white font-semibold  ${
+    className={`button flex gap-1 items-center justify-center bg-[#293040] rounded-lg text-white   ${
       size === "lg" ? "px-6 py-4 text-body-sm" : "px-5 py-3 text-body-xs"
     }`}
     href={link}>
