@@ -139,7 +139,7 @@ const VRScene = ({ selectedScene }) => {
         {/* Camera animation that moves slowly */}
         <Entity
           primitive="a-camera"
-          position={{ x: 0, y: 1.6, z: 0 }}
+          position={{ x: 0, y: 1.6, z: -5 }}
           animation="property: position; to: 5 1.6 0; dur: 60000; easing: linear; loop: true" // Camera moves slowly in a loop
         >
           <Entity primitive="a-cursor" animation__click={{ property: 'scale', startEvents: 'click', from: '0.1 0.1 0.1', to: '1 1 1', dur: 150 }} />
