@@ -10,12 +10,18 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // Ensure the code only runs on the client side
+    if (typeof window !== 'undefined') {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 50);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, []); // Empty dependency array to run only once on mount
+
 
   const navigation = [
     { name: "À propos", href: "about" },

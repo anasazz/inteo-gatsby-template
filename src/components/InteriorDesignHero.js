@@ -3,10 +3,26 @@ import heroImg from "../images/bg/nnn.png";
 
 const InteriorDesignHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0); // Store the window width
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  useEffect(() => {
+    // Set the window width when the component mounts
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    // Set the initial window width
+    handleResize();
+
+    // Add event listener for resizing the window
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty dependency array to run once on mount
+
 
   return (
     <div 
