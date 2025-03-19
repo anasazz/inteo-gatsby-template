@@ -8,7 +8,7 @@ const WorkItem = ({ image, title, description }) => {
       <GatsbyImage image={image} alt={title} />
       <div className="flex flex-col self-stretch pt-6">
         <h3 className="font-display text-display-md pb-4">{title}</h3>
-        <p className="text-body-lg font-light text-neutral-700">
+        <p className="text-body-lg font-light ">
           {description}
         </p>
       </div>

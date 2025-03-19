@@ -18,8 +18,8 @@ const Footer = () => {
   `);
 
   return (
-    <footer>
-      <div className="container mx-auto">
+    <footer className="bg-black">
+      <div className="container mx-auto ">
         <div className="mt-2 md:mb-20 mb-10">
           <hr className="text-neutral-300"></hr>
         </div>
@@ -74,10 +74,10 @@ const Footer = () => {
           </div>
           <div className="flex lg:flex-row flex-col lg:items-center md:gap-6 gap-4">
             <div className="flex flex-row items-center opacity-70">
-              <p className="text-body-sm font-semibold tracking-widest text-neutral-700 pr-4">
+              <p className="text-body-sm font-semibold tracking-widest text-neutral-100 pr-4">
               CONTACTEZ-NOUS
                             </p>
-              <hr className="w-16 text-neutral-700"></hr>
+              <hr className="w-16 text-neutral-100"></hr>
             </div>
             <div className="flex flex-row items-center gap-6">
               {data.allSocialJson.nodes.map((node) => (

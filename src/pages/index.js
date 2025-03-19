@@ -8,10 +8,17 @@ import Services from "../components/services";
 import Awards from "../components/awards";
 import About from "../components/about";
 import Works from "../components/works";
+import Intro from "../components/intro";
+import InteriorDesignHero from "../components/InteriorDesignHero";
 
 const IndexPage = () => (
   <Layout>
     {/* <Seo /> */}
+
+    <InteriorDesignHero />
+
+
+    {/* <Intro /> */}
     
     <Hero />
     <Awards />

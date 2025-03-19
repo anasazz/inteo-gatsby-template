@@ -11,7 +11,7 @@ const ServiceItem = ({ icon, title, description }) => {
         <p className="font-display  md:text-display-md text-display-sm font-normal">
           {title}
         </p>
-        <p className="text-body-lg font-light text-neutral-700">
+        <p className="text-body-lg font-light text-neutral-100">
           {description}
         </p>
         

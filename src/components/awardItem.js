@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 
 const AwardItem = ({ logo, title, year }) => {
   return (
-    <div className="flex flex-row  items-center grow ">
-      <img className="" src={logo} width={150} height={150} alt={title} />
-    
+    <div className="flex-none w-[22%] sm:w-auto rounded-3xl flex-row mx-auto p-2 text-center items-center">
+      <img className="w-full max-w-[80px] sm:max-w-[150px]" src={logo} alt={title} />
     </div>
   );
 };
+
+
 
 AwardItem.propTypes = {
   logo: PropTypes.string.isRequired,

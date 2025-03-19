@@ -9,6 +9,7 @@ const VRScene = ({ selectedScene }) => {
   const [loadProgress, setLoadProgress] = useState(0);
   const [loadErrors, setLoadErrors] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [thumbnailsVisible, setThumbnailsVisible] = useState(true);
 
   // Set default scene on first load
   useEffect(() => {
@@ -90,17 +91,23 @@ const VRScene = ({ selectedScene }) => {
     setSelectedImage(src);
   };
 
+  const toggleThumbnails = () => {
+    setThumbnailsVisible(!thumbnailsVisible);
+  };
+
   if (loading) {
     return (
-      <div className="w-full h-[700px] flex flex-col items-center justify-center bg-black">
-        <p className="mb-4 text-lg font-medium text-white">Loading scene...</p>
-        <div className="w-64 h-3 bg-black rounded-full overflow-hidden border border-white">
-          <div 
-            className="h-full bg-white transition-all duration-300 ease-out"
-            style={{ width: `${loadProgress}%` }}
-          ></div>
+      <div className="w-full h-[700px] md:h-[500px] lg:h-[700px] flex flex-col items-center justify-center bg-gray-900">
+        <div className="bg-black/60 backdrop-blur-sm p-8 rounded-xl shadow-2xl flex flex-col items-center">
+          <p className="mb-4 text-lg font-medium text-white">Loading {selectedScene}...</p>
+          <div className="w-64 h-3 bg-gray-800 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out"
+              style={{ width: `${loadProgress}%` }}
+            ></div>
+          </div>
+          <p className="mt-4 font-bold text-white">{loadProgress}%</p>
         </div>
-        <p className="mt-4 font-bold text-white">{loadProgress}%</p>
       </div>
     );
   }
@@ -108,31 +115,27 @@ const VRScene = ({ selectedScene }) => {
   const { Scene, Entity } = require('aframe-react');
 
   return (
-    <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-4">
-        {sceneKeys.map((scene) => (
-          <button
-            key={scene}
-            onClick={(e) => {
-              e.preventDefault(); // Prevent default button behavior
-              loadScene(scene);
-            }}
-            className={`px-4 py-2 rounded text-white ${
-              scene === selectedScene ? 'bg-blue-600' : 'bg-gray-700'
-            }`}
-          >
-            {scene}
-          </button>
-        ))}
-      </div>
+    <div className="w-full h-[700px] md:h-[500px] lg:h-[700px] relative bg-black overflow-hidden">
+      {/* Toggle Thumbnails Button */}
+      <button 
+        onClick={toggleThumbnails}
+        className="absolute top-4 right-4 z-30 bg-gray-900/80 text-white p-2 rounded-full shadow-lg hover:bg-gray-800 transition-colors"
+        aria-label={thumbnailsVisible ? "Hide thumbnails" : "Show thumbnails"}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </button>
 
       {/* VR Scene */}
-      <Scene embedded style={{ width: '100%', height: '100%' }}>
+      <Scene embedded className="w-full h-full">
         {/* Rotating sky animation with slow, continuous rotation */}
         <Entity
           primitive="a-sky"
           src={selectedImage || sceneSrcs[0]}
-
           animation="property: rotation; to: 0 360 0; dur: 60000; loop: true" // 1 minute to complete a full rotation
         />
 
@@ -146,32 +149,109 @@ const VRScene = ({ selectedScene }) => {
         </Entity>
       </Scene>
 
-      {/* Preview images - vertical layout on left side */}
-      <div className="absolute top-5 left-5 flex flex-col gap-4 max-h-[600px] overflow-y-auto">
-        {sceneSrcs.map((src, index) => (
-          <img
-            key={index}
-            src={src}
-            alt={`Scene Image ${index}`}
-            className={`w-24 h-24 object-cover border-2 rounded-lg cursor-pointer transition-all ${
-              selectedImage === src ? 'border-yellow-500 border-4' : ' border-white hover:border-gray-300'
-            }`}
-            onClick={() => handleImageClick(src)}
-          />
-        ))}
-      </div>
+      {/* Preview thumbnails containers */}
+      {thumbnailsVisible && (
+        <>
+          {/* Mobile: Thumbnail bar at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 md:hidden z-20">
+            <div className="bg-black/70 backdrop-blur-sm pt-3 pb-4 px-2">
+              <p className="text-white text-xs mb-1 px-2 opacity-80">Select view:</p>
+              
+              <div className="overflow-x-auto pb-2">
+                <div className="flex gap-2 pl-2 min-w-min">
+                  {sceneSrcs.map((src, index) => (
+                    <div 
+                      key={index}
+                      className={`flex-shrink-0 relative ${
+                        selectedImage === src ? 'scale-105 z-10' : ''
+                      }`}
+                    >
+                      <img
+                        src={src}
+                        alt={`Scene ${index + 1}`}
+                        className={`w-16 h-16 object-cover rounded-lg ${
+                          selectedImage === src 
+                            ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/50' 
+                            : 'opacity-70'
+                        }`}
+                        onClick={() => handleImageClick(src)}
+                      />
+                      <span className="absolute bottom-1 left-1 text-xs bg-black/60 px-1 rounded text-white">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop/Tablet: Sidebar with thumbnails */}
+          <div className="hidden md:block absolute top-0 left-0 bottom-0 z-20">
+            <div className="h-full bg-black/50 backdrop-blur-sm p-3 flex flex-col">
+              <p className="text-white text-xs mb-3 opacity-80">Views:</p>
+              
+              <div className="overflow-y-auto flex-grow styled-scrollbar">
+                <div className="flex flex-col gap-3 pr-1">
+                  {sceneSrcs.map((src, index) => (
+                    <div 
+                      key={index}
+                      className={`relative ${
+                        selectedImage === src ? 'scale-105 z-10' : ''
+                      }`}
+                    >
+                      <img
+                        src={src}
+                        alt={`Scene ${index + 1}`}
+                        className={`w-20 h-20 object-cover rounded-lg cursor-pointer transition-all ${
+                          selectedImage === src 
+                            ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/50' 
+                            : 'opacity-70 hover:opacity-100'
+                        }`}
+                        onClick={() => handleImageClick(src)}
+                      />
+                      <span className="absolute bottom-1 left-1 text-xs bg-black/60 px-1 rounded text-white">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Display load errors if any */}
       {loadErrors.length > 0 && (
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-red-500 bg-white bg-opacity-75 p-2 rounded">
-          <p>Error loading the following images:</p>
-          <ul>
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-red-500 bg-black/80 backdrop-blur-sm p-3 rounded-lg shadow-lg max-w-xs sm:max-w-md z-30">
+          <p className="font-medium">Failed to load:</p>
+          <ul className="text-sm mt-1">
             {loadErrors.map((error, index) => (
-              <li key={index}>{error}</li>
+              <li key={index} className="truncate">{error}</li>
             ))}
           </ul>
         </div>
       )}
+
+      {/* Custom scrollbar styles */}
+      <style jsx global>{`
+        .styled-scrollbar::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .styled-scrollbar::-webkit-scrollbar-track {
+          background: rgba(75, 85, 99, 0.1);
+          border-radius: 10px;
+        }
+        .styled-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(59, 130, 246, 0.5);
+          border-radius: 10px;
+        }
+        .styled-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(59, 130, 246, 0.7);
+        }
+      `}</style>
     </div>
   );
 };
