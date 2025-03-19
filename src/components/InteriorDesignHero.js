@@ -3,26 +3,30 @@ import heroImg from "../images/bg/nnn.png";
 
 const InteriorDesignHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [window, setWindowWidth] = useState(0); // Store the window width
+  const [windowWidth, setWindowWidth] = useState(null); // Use null initially
 
   useEffect(() => {
     setIsLoaded(true);
+
+    if (typeof window !== "undefined") {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+
+      // Set the initial window width
+      handleResize();
+
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+
+      // Cleanup event listener on unmount
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
-  useEffect(() => {
-    // Set the window width when the component mounts
-    const handleResize = () => setWindowWidth(window.innerWidth);
-
-    // Set the initial window width
-    handleResize();
-
-    // Add event listener for resizing the window
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on component unmount
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty dependency array to run once on mount
-
+  // Determine styles only if windowWidth is available
+  const getFontSize = () => {
+    if (windowWidth === null) return "2rem"; // Default size before hydration
+    return windowWidth < 640 ? "2.5rem" : windowWidth < 1024 ? "4rem" : "6rem";
+  };
 
   return (
     <div 
@@ -35,10 +39,10 @@ const InteriorDesignHero = () => {
         padding: "2rem 1rem",
       }}
     >
-      {/* Mobile title (shown below 640px) */}
+      {/* Title */}
       <div 
         style={{ 
-          display: window.innerWidth < 640 ? "block" : "none",
+          display: windowWidth !== null ? "block" : "none", 
           width: "100%", 
           maxWidth: "1280px", 
           margin: "0 auto 2rem auto", 
@@ -47,53 +51,7 @@ const InteriorDesignHero = () => {
       >
         <p 
           style={{ 
-            fontSize: "2.5rem", // 40px
-            fontFamily: "Cormorant Garamond",
-            lineHeight: 1.2
-          }}
-        >
-          INTERIOR
-          <br />
-          DESIGN STUDIO
-        </p>
-      </div>
-
-      {/* Tablet title (shown between 640px and 1024px) */}
-      <div 
-        style={{ 
-          display: window.innerWidth >= 640 && window.innerWidth < 1024 ? "block" : "none",
-          width: "100%", 
-          maxWidth: "1280px", 
-          margin: "0 auto 2rem auto", 
-          textAlign: "center"
-        }}
-      >
-        <p 
-          style={{ 
-            fontSize: "4rem", // 64px
-            fontFamily: "Cormorant Garamond",
-            lineHeight: 1.2
-          }}
-        >
-          INTERIOR
-          <br />
-          DESIGN STUDIO
-        </p>
-      </div>
-
-      {/* Desktop title (shown above 1024px) */}
-      <div 
-        style={{ 
-          display: window.innerWidth >= 1024 ? "block" : "none",
-          width: "100%", 
-          maxWidth: "1280px", 
-          margin: "0 auto 2rem auto", 
-          textAlign: "center"
-        }}
-      >
-        <p 
-          style={{ 
-            fontSize: "6rem", // 96px
+            fontSize: getFontSize(),
             fontFamily: "Cormorant Garamond",
             lineHeight: 1.2
           }}
@@ -120,7 +78,7 @@ const InteriorDesignHero = () => {
           style={{ 
             position: "relative", 
             width: "100%", 
-            height: window.innerWidth < 640 ? "300px" : window.innerWidth < 1024 ? "450px" : "600px",
+            height: windowWidth < 640 ? "300px" : windowWidth < 1024 ? "450px" : "600px",
             borderRadius: "1rem",
             overflow: "hidden",
             border: "1px solid #333",
