@@ -3,7 +3,7 @@ import heroImg from "../images/bg/nnn.png";
 
 const InteriorDesignHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0); // Store the window width
+  const [window, setWindowWidth] = useState(0); // Store the window width
 
   useEffect(() => {
     setIsLoaded(true);
