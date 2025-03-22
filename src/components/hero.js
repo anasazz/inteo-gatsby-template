@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import CtaButton from "../images/cta-button.svg";
 import VRScene from "./VRScene";
 import { assets } from "../assets";
@@ -9,7 +9,7 @@ const Hero = () => {
   const [selectedScene, setSelectedScene] = useState(places.length > 0 ? places[0] : null);
   const [selectedAsset, setSelectedAsset] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  
   // If the places list changes (unlikely but for completeness)
   useEffect(() => {
     if (places.length > 0 && !places.includes(selectedScene)) {
@@ -17,16 +17,28 @@ const Hero = () => {
     }
   }, [places]);
 
-  const handleSceneSelect = (place, e) => {
-    // Prevent default button behavior to avoid page scrolling
-    e.preventDefault();
-    e.stopPropagation();
+  // Memoize the handler to prevent recreating it on each render
+  const handleSceneSelect = useCallback((place) => {
+    // Only update if the selection actually changed
+    if (selectedScene !== place) {
+      setSelectedScene(place);
+      setSelectedAsset(null);
+      
+      // After state update, scroll to the vrSceneContainer element
+      setTimeout(() => {
+        const sceneElement = document.getElementById('vrSceneContainer');
+        if (sceneElement) {
+          sceneElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 200); // Short delay to ensure state updates are processed
+    }
     
-    setSelectedScene(place);
-    setSelectedAsset(null);
     setMenuOpen(false); // Close dropdown on selection (mobile)
-  };
+    return false;
+  }, [selectedScene]);
 
+
+  
   return (
     <div className="relative bg-gradient-to-b from-gray-900 to-black text-white">
       {/* Header with title */}
@@ -35,15 +47,20 @@ const Hero = () => {
           Virtual Tour Experience
         </h1>
         <p className="text-sm sm:text-base text-gray-300 mt-2 max-w-xl mx-auto">
-          Explore immersive 360° views of our featured locations
+        Explorez des vues immersives à 360° de nos lieux emblématiques.
         </p>
       </div>
 
       {/* Mobile: Scene Selection Dropdown */}
       <div className="md:hidden px-4 my-3 relative z-10">
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setMenuOpen(!menuOpen);
+          }}
           className="flex items-center justify-between w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white shadow-lg"
+          type="button"
         >
           <span className="capitalize font-medium">{selectedScene || "Select Scene"}</span>
           <svg
@@ -67,7 +84,8 @@ const Hero = () => {
                     ? "bg-blue-600 text-white"
                     : "text-gray-200 hover:bg-gray-700"
                 }`}
-                onClick={(e) => handleSceneSelect(place, e)}
+                onClick={() => handleSceneSelect(place)}
+                type="button"
               >
                 {place}
               </button>
@@ -87,7 +105,7 @@ const Hero = () => {
                         ? 'bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-md' 
                         : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
                       }`}
-            onClick={(e) => handleSceneSelect(place, e)}
+            onClick={() => handleSceneSelect(place)}
             type="button"
           >
             {place}
@@ -95,10 +113,14 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* VR Scene Container */}
-      <div className="relative overflow-hidden rounded-lg mx-auto mb-8 shadow-2xl max-w-7xl">
+      {/* VR Scene Container - Add an ID here */}
+      <div id="vrSceneContainer" className="relative overflow-hidden rounded-lg mx-auto mb-8 shadow-2xl max-w-7xl">
         <div className="w-full h-[500px] md:h-[550px] lg:h-[700px] relative rounded-lg overflow-hidden">
-          <VRScene selectedScene={selectedScene} selectedAsset={selectedAsset} />
+          <VRScene 
+            selectedScene={selectedScene} 
+            selectedAsset={selectedAsset}
+            sceneKeys={places}
+          />
         </div>
         
         {/* Info overlay - optional */}

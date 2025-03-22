@@ -4,7 +4,7 @@ export const assets = {
     'top roof': ['hut1.jpeg', 'hut2.jpeg','Terrace bleu fish 3.jpeg'],
     'magazin': ['magasin razana 5.jpeg','magasinrazana.jpeg','magasin razana 2.jpeg','magasin razana 3.jpeg','magasin razana 4.jpeg',],
 
-    'fitness': ['gaming space 4.jpeg', ],
+    'fitness': ['gaming space 4.jpeg', 'gaming space 1.jpeg', 'gaming space 2.jpeg', 'gaming space 3.jpeg',  ],
     'cinema': ['CINEMA ROOM.jpeg','CINEMA ROOM night.jpeg' ,'CINEMA ROOM  2.jpeg','CINEMA ROOM night 2.jpeg',],
     'centre de beauté': ['center de beauté 1.jpeg', 'center de beauté 3.jpeg'],
 
