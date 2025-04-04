@@ -21,9 +21,7 @@ const Awards = () => {
   return (
     <section className="bg-dark w-full py-10 mx-auto sm:py-16 lg:py-20">
       <div className="container rounded-xl text-center mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <h2 className="text-display-2xl sm:text-3xl font-bold text-white mb-8">Nos Clients Privilégiés</h2>
-        <p className="text-gray-300 mb-10 max-w-2xl text-display-xs mx-auto">Nous sommes fiers de collaborer avec ces organisations exceptionnelles, les aidant à atteindre leurs objectifs et à franchir de nouveaux sommets.</p>
-        
+      
         {/* Mobile: Single row with all items */}
         <div className="flex sm:hidden  bg-neutral-900 rounded-3xl py-2">
           {data.allAwardsJson.nodes.map((node) => (
@@ -37,7 +35,7 @@ const Awards = () => {
         </div>
 
         {/* Tablet & Desktop: Grid layout with 5 items per row */}
-        <div className="hidden sm:grid md:grid grid-cols-3 md:grid-cols-5 gap-4  bg-neutral-900 rounded-3xl">
+        <div className="hidden sm:grid md:grid grid-cols-3 md:grid-cols-4 gap-4  bg-neutral-900 rounded-3xl">
           {data.allAwardsJson.nodes.map((node) => (
             <AwardItem
               key={node.id}
@@ -47,7 +45,13 @@ const Awards = () => {
             />
           ))}
         </div>
-
+        <div className="text-center mt-5">
+          <h1 className="text-display-2xl font-light tracking-wide">
+            Nos <span className="text-[#d3f030] italic">Clients</span>
+          </h1>
+        </div>
+       
+        <p className="text-gray-300 mt-5 max-w-2xl text-display-xs mx-auto">Nous sommes fiers de collaborer avec ces organisations exceptionnelles, les aidant à atteindre leurs objectifs et à franchir de nouveaux sommets.</p>
         
       </div>
     </section>

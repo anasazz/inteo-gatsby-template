@@ -1,9 +1,5 @@
 [
-  {
-    "logo": "../images/award-logos/Urban-Hotel-Spa-logo.png",
-    "title": "German Design Award",
-    "year": "2021"
-  },
+
   {
     "logo": "../images/award-logos/veolia.png",
     "title": "Veolia",
@@ -15,10 +11,11 @@
     "year": "2020"
   },
   {
-    "logo": "../images/award-logos/bens.png",
-    "title": "Mr bens",
-    "year": "2020"
+    "logo": "../images/award-logos/Urban-Hotel-Spa-logo.png",
+    "title": "German Design Award",
+    "year": "2021"
   },
+
   {
     "logo": "../images/award-logos/fenair.png",
     "title": "Fenair",

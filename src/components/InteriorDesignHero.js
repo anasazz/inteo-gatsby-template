@@ -107,11 +107,11 @@ const InteriorDesignHero = () => {
             rightImageLabel="APRÈS"
             leftImageCss={{ 
               objectFit: "cover", 
-              height: "100%"
+              height: getImageHeight()
             }}
             rightImageCss={{ 
               objectFit: "cover", 
-              height: "100%"
+              height: getImageHeight()
             }}
             sliderPositionPercentage={0.5}
             hover={false}

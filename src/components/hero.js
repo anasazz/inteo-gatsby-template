@@ -39,7 +39,7 @@ const Hero = () => {
   }, [selectedScene]);
 
   return (
-    <div className="relative bg-gradient-to-b from-gray-900 to-black text-white">
+    <div id='works' className="relative bg-gradient-to-b from-gray-900 to-black text-white">
       {/* Header with title */}
       <div className="pt-6 pb-2 px-4 text-center">
         <h1 className="text-2xl text-display-xl text-white sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">

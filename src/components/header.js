@@ -24,7 +24,7 @@ const Header = () => {
 
 
   const navigation = [
-    { name: "À propos", href: "about" },
+    { name: "Propositions", href: "propositions" },
     { name: "Services", href: "services" },
     { name: "Nos réalisations", href: "works" },
   ];
@@ -112,7 +112,7 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <div className="pt-2 pb-1">
+            {/* <div className="pt-2 pb-1">
               <Link 
                 to="contact" 
                 spy={true} 
@@ -127,7 +127,7 @@ const Header = () => {
                   label="NOUS CONTACTER" 
                 />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>

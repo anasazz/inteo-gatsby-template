@@ -9,11 +9,11 @@ const PricingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-serif">
+    <div id='propositions' className="min-h-screen bg-black text-white font-serif">
       <main className="container mx-auto px-8 py-12">
         <div className="text-center mb-16">
-          <h1 className="text-display-2xl font-light tracking-wide">
-            TARIFS <span className="text-[#d3f030] italic">plans</span>
+          <h1 className="text-display-xl font-light tracking-wide">
+            Nos <span className="text-[#d3f030] italic">Propositions</span>
           </h1>
         </div>
 
@@ -23,7 +23,7 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
             {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(5€/M²)</div> */}
-            <h2 className="text-display-xl font-light tracking-wide">STANDARD</h2>
+            <h2 className="text-display-xl md:text-display-2xl  font-light tracking-wide">STANDARD</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">
@@ -46,7 +46,7 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
             {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(10€/M²)</div> */}
-            <h2 className="text-display-2xl font-light tracking-wide">OPTIMAL</h2>
+            <h2 className="text-display-xl md:text-display-2xl  font-light tracking-wide">OPTIMAL</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">
@@ -69,7 +69,7 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
             {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(20€/M²)</div> */}
-            <h2 className="text-display-2xl font-light tracking-wide">PREMIUM</h2>
+            <h2 className="text-display-xl md:text-display-2xl font-light tracking-wide">PREMIUM</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">

@@ -46,7 +46,7 @@ const ContactPage = () => {
           <div>
             <h2 className="text-3xl mb-5 font-light">Envoyez-nous un message</h2>
             <p className="text-xl mb-8">Pour discuter de votre projet, partagez vos idées et objectifs avec nous.</p>
-            <Link to="/contact-form" className="inline-block border border-white p-3">
+            <Link to="https://wa.me/212690090075?text=Je suis intéressé(e). Pouvez-vous me donner plus d'informations ?" className="inline-block border border-white p-3">
               <ArrowUpRight size={28} />
             </Link>
           </div>

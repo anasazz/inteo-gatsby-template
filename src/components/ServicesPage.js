@@ -38,7 +38,7 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white font-serif">
+    <div id='services' className="min-h-screen bg-black text-white font-serif">
       {/* Header avec animation subtile */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -49,9 +49,13 @@ const ServicesPage = () => {
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="w-full h-full bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
         </div>
-        <h1 className="text-display-xl md:text-display-2xl lg:text-display-3xl font-light tracking-widest relative z-10">
-          NOS <span className="text-yellow-400 italic font-normal">SERVICES</span>
-        </h1>
+
+        <div className="text-center mb-16">
+          <h1 className="text-display-2xl font-light tracking-wide">
+            Nos <span className="text-[#d3f030] italic">Services</span>
+          </h1>
+        </div>
+
         <p className="mt-4 text-gray-300 max-w-xl mx-auto text-display-xs md:text-display-sm">
           Une expertise sur mesure pour transformer vos espaces en œuvres d'art fonctionnelles
         </p>
@@ -143,8 +147,9 @@ const ServicesPage = () => {
         {/* Témoignages */}
         <section className="mb-16 md:mb-24 pt-12 md:pt-16 border-t border-gray-800">
           <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-display-lg md:text-display-xl lg:text-display-xl font-light mb-4 md:mb-6 tracking-wide">TÉMOIGNAGES</h2>
+
             <span className="inline-block text-yellow-400 italic mb-2 text-display-xs">ce que disent nos clients</span>
-            <h2 className="text-display-lg md:text-display-xl lg:text-display-2xl font-light mb-4 md:mb-6 tracking-wide">TÉMOIGNAGES</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -185,7 +190,7 @@ const ServicesPage = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-display-lg md:text-display-xl lg:text-display-2xl font-light mb-4 md:mb-6 tracking-wide">TRANSFORMONS VOTRE ESPACE</h2>
+            <h2 className="text-display-md md:text-display-xl lg:text-display-2xl font-light mb-4 md:mb-6 tracking-wide">TRANSFORMONS VOTRE ESPACE</h2>
             <p className="text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto text-display-xs md:text-display-sm px-4">
               Nos experts sont prêts à vous accompagner dans votre projet de transformation. 
               Contactez-nous dès aujourd'hui pour une consultation personnalisée.

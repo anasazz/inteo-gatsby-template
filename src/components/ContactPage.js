@@ -6,6 +6,14 @@ import { useStaticQuery, graphql } from "gatsby";
 import TopBar from "./TopBar";
 
 const ContactPage = () => {
+
+
+  const createWhatsAppLink = (plan) => {
+    const message = encodeURIComponent(`Je suis intéressé(e) par votre plan ${plan}. Pouvez-vous me donner plus d'informations ?`);
+    return `https://wa.me/212690090075?text=${message}`;
+  };
+
+  
   const data = useStaticQuery(graphql`
     {
       allSocialJson {
@@ -47,7 +55,7 @@ const ContactPage = () => {
           <div>
             <h2 className="text-display-lg mb-5 font-light">Envoyez-nous un message</h2>
             <p className="text-display-xs mb-8">Pour discuter de votre projet, partagez vos idées et objectifs avec nous.</p>
-            <Link to="/contact-form" className="inline-block border border-white p-3">
+            <Link to="https://wa.me/212690090075?text=Je suis intéressé(e). Pouvez-vous me donner plus d'informations ?" className="inline-block border border-white p-3">
               <ArrowUpRight size={28} />
             </Link>
           </div>
