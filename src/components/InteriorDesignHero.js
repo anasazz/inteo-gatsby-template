@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
-import heroImg from "../images/bg/nnn.png";
+import ReactCompareImage from "react-compare-image";
+import heroImg from "../images/archi/archi1.png";
+import afterImg from "../images/archi/archi2.png";
 
 const InteriorDesignHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(null); // Use null initially
+  const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
     setIsLoaded(true);
 
     if (typeof window !== "undefined") {
       const handleResize = () => setWindowWidth(window.innerWidth);
-
-      // Set the initial window width
       handleResize();
-
-      // Add event listener
       window.addEventListener("resize", handleResize);
-
-      // Cleanup event listener on unmount
       return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
 
-  // Determine styles only if windowWidth is available
   const getFontSize = () => {
-    if (windowWidth === null) return "2rem"; // Default size before hydration
+    if (windowWidth === null) return "2rem";
     return windowWidth < 640 ? "2.5rem" : windowWidth < 1024 ? "4rem" : "6rem";
+  };
+
+  const getImageHeight = () => {
+    if (windowWidth === null) return "450px";
+    return windowWidth < 640 ? "300px" : windowWidth < 1024 ? "450px" : "600px";
   };
 
   return (
@@ -62,7 +62,7 @@ const InteriorDesignHero = () => {
         </p>
       </div>
 
-      {/* Image container */}
+      {/* Image comparison container */}
       <div
         style={{
           width: "100%",
@@ -71,31 +71,58 @@ const InteriorDesignHero = () => {
           position: "relative",
           transition: "all 1s ease",
           opacity: isLoaded ? 1 : 0,
-          transform: isLoaded ? "translateY(0)" : "translateY(2rem)"
+          transform: isLoaded ? "translateY(0)" : "translateY(2rem)",
+          borderRadius: "1rem",
+          overflow: "hidden",
+          border: "1px solid #333",
+          boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.5)",
+          height: getImageHeight()
         }}
       >
-        <div 
-          style={{ 
-            position: "relative", 
-            width: "100%", 
-            height: windowWidth < 640 ? "300px" : windowWidth < 1024 ? "450px" : "600px",
-            borderRadius: "1rem",
-            overflow: "hidden",
-            border: "1px solid #333",
-            boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.5)"
-          }}
-        >
-          <img
-            src={heroImg}
-            alt="Interior Design Desktop Website"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "1rem"
+        <div style={{ height: "100%", position: "relative", }}>
+          <ReactCompareImage
+            leftImage={heroImg}
+            rightImage={afterImg}
+            sliderLineWidth={4}
+            sliderLineColor="white"
+            handleSize={40}
+            handle={
+              <div style={{ 
+                width: "40px", 
+                height: "40px", 
+                border: "3px solid white", 
+                borderRadius: "50%", 
+                backgroundColor: "white",
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center",
+                fontSize: "18px",
+                fontWeight: "bold",
+                color: "black"
+              }}>
+                ←→
+              </div>
+            }
+            leftImageLabel="AVANT"
+            rightImageLabel="APRÈS"
+            leftImageCss={{ 
+              objectFit: "cover", 
+              height: "100%"
             }}
+            rightImageCss={{ 
+              objectFit: "cover", 
+              height: "100%"
+            }}
+            sliderPositionPercentage={0.5}
+            hover={false}
+            vertical={false}
           />
         </div>
+      </div>
+      
+      {/* Optional instruction text */}
+      <div style={{ textAlign: "center", marginTop: "1rem", color: "#aaa", fontSize: "14px" }}>
+        Faites glisser pour comparer les designs avant et après
       </div>
     </div>
   );

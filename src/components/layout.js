@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 
 import Header from "./header";
 import Footer from "./footer";
+import ContactPage from "./ContactPage";
 const Layout = ({ children }) => (
   <>
     <Helmet>
@@ -14,7 +15,8 @@ const Layout = ({ children }) => (
     <div className="bg-black">
     <Header />
       <main>{children}</main>
-      <Footer />
+      <ContactPage />
+      {/* <Footer /> */}
     </div>
 
   </>

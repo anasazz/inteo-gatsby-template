@@ -6,17 +6,22 @@
   },
   {
     "logo": "../images/award-logos/veolia.png",
-    "title": "Gold A’ Design Award",
+    "title": "Veolia",
     "year": "2021"
   },
   {
     "logo": "../images/award-logos/Hudson.png",
-    "title": "Hudson",
+    "title": "Hudson Maroc",
     "year": "2020"
   },
   {
-    "logo": "../images/award-logos/new.png",
-    "title": "Good Design Award",
+    "logo": "../images/award-logos/bens.png",
+    "title": "Mr bens",
+    "year": "2020"
+  },
+  {
+    "logo": "../images/award-logos/fenair.png",
+    "title": "Fenair",
     "year": "2019"
   }
 ]

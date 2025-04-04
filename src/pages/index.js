@@ -10,6 +10,10 @@ import About from "../components/about";
 import Works from "../components/works";
 import Intro from "../components/intro";
 import InteriorDesignHero from "../components/InteriorDesignHero";
+import ServicesPage from "../components/ServicesPage";
+import ContactPage from "../components/ContactPage";
+import PricingPage from "../components/PricingPage";
+import PageTarifs from "../components/PageTarifs";
 
 const IndexPage = () => (
   <Layout>
@@ -18,14 +22,20 @@ const IndexPage = () => (
     <InteriorDesignHero />
 
 
-    {/* <Intro /> */}
+
     
     <Hero />
     <Awards />
-    <About />
-    <Metrics />
-    <Services />
-    <Works />
+    {/* <About /> */}
+    {/* <Metrics /> */}
+
+
+    <PricingPage />
+
+
+    <ServicesPage />
+    {/* <Services /> */}
+    {/* <Works /> */}
   </Layout>
 );
 

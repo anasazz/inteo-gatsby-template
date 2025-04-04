@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import CtaButton from "../images/cta-button.svg";
 import VRScene from "./VRScene";
 import { assets } from "../assets";
+import LandingHero from "./intro";
 
 const places = Object.keys(assets);
 
@@ -37,16 +38,14 @@ const Hero = () => {
     return false;
   }, [selectedScene]);
 
-
-  
   return (
     <div className="relative bg-gradient-to-b from-gray-900 to-black text-white">
       {/* Header with title */}
       <div className="pt-6 pb-2 px-4 text-center">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-          Virtual Tour Experience
+        <h1 className="text-2xl text-display-xl text-white sm:text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+        Expérience de Visite Virtuelle
         </h1>
-        <p className="text-sm sm:text-base text-gray-300 mt-2 max-w-xl mx-auto">
+        <p className="text-sm sm:text-base text-gray-300 mt-2 max-w-xl text-display-xs mx-auto">
         Explorez des vues immersives à 360° de nos lieux emblématiques.
         </p>
       </div>
@@ -62,7 +61,7 @@ const Hero = () => {
           className="flex items-center justify-between w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white shadow-lg"
           type="button"
         >
-          <span className="capitalize font-medium">{selectedScene || "Select Scene"}</span>
+          <span className="capitalize font-medium">{selectedScene || "Sélectionner un lieu"}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`h-5 w-5 transition-transform ${menuOpen ? "rotate-180" : ""}`}
@@ -113,7 +112,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* VR Scene Container - Add an ID here */}
+      {/* VR Scene Container */}
       <div id="vrSceneContainer" className="relative overflow-hidden rounded-lg mx-auto mb-8 shadow-2xl max-w-7xl">
         <div className="w-full h-[500px] md:h-[550px] lg:h-[700px] relative rounded-lg overflow-hidden">
           <VRScene 
@@ -124,10 +123,10 @@ const Hero = () => {
         </div>
         
         {/* Info overlay - optional */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pointer-events-none md:block hidden">
           <div className="container mx-auto">
             <h3 className="text-lg md:text-xl font-medium capitalize">{selectedScene}</h3>
-            <p className="text-sm text-gray-300">Navigate the 360° view by dragging or using controls</p>
+            <p className="text-sm text-gray-300">Naviguez dans la vue à 360° en faisant glisser ou en utilisant les contrôles</p>
           </div>
         </div>
       </div>

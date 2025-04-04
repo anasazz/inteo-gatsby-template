@@ -3,6 +3,15 @@ import { Phone, Mail } from "lucide-react";
 
 const socialLinks = [
   {
+    name: "WhatsApp",
+    href: "https://wa.me/2120690090075",
+    svg: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    ),
+  },
+  {
     name: "Instagram",
     href: "https://www.instagram.com/ndesign_ma/",
     svg: (
@@ -31,96 +40,72 @@ const socialLinks = [
       </svg>
     ),
   },
-  {
-    name: "YouTube",
-    href: "https://www.youtube.com/",
-    svg: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 12C22 12 22 8.5 21.6 6.9C21.3 5.5 20.2 4.3 18.8 4C17.1 3.6 12 3.6 12 3.6C12 3.6 6.9 3.6 5.2 4C3.8 4.3 2.7 5.5 2.4 6.9C2 8.5 2 12 2 12C2 12 2 15.5 2.4 17.1C2.7 18.5 3.8 19.7 5.2 20C6.9 20.4 12 20.4 12 20.4C12 20.4 17.1 20.4 18.8 20C20.2 19.7 21.3 18.5 21.6 17.1C22 15.5 22 12 22 12Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M9.75 15.5L15.5 12L9.75 8.5V15.5Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Pinterest",
-    href: "https://www.pinterest.com/yourprofile/",
-    svg: (
-      <svg
-        height="20"
-        width="20"
-        viewBox="0 0 511.998 511.998"
-        fill="white"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M405.017,52.467C369.774,18.634,321.001,0,267.684,0C186.24,0,136.148,33.385,108.468,61.39
-          c-34.114,34.513-53.675,80.34-53.675,125.732c0,56.993,23.839,100.737,63.76,117.011c2.68,1.098,5.377,1.651,8.021,1.651
-          c8.422,0,15.095-5.511,17.407-14.35c1.348-5.071,4.47-17.582,5.828-23.013c2.906-10.725,0.558-15.884-5.78-23.353
-          c-11.546-13.662-16.923-29.817-16.923-50.842c0-62.451,46.502-128.823,132.689-128.823c68.386,0,110.866,38.868,110.866,101.434
-          c0,39.482-8.504,76.046-23.951,102.961c-10.734,18.702-29.609,40.995-58.585,40.995c-12.53,0-23.786-5.147-30.888-14.121
-          c-6.709-8.483-8.921-19.441-6.222-30.862c3.048-12.904,7.205-26.364,11.228-39.376c7.337-23.766,14.273-46.213,14.273-64.122
-          c0-30.632-18.832-51.215-46.857-51.215c-35.616,0-63.519,36.174-63.519,82.354c0,22.648,6.019,39.588,8.744,46.092
-          c-4.487,19.01-31.153,132.03-36.211,153.342c-2.925,12.441-20.543,110.705,8.618,118.54c32.764,8.803,62.051-86.899,65.032-97.713
-          c2.416-8.795,10.869-42.052,16.049-62.495c15.817,15.235,41.284,25.535,66.064,25.535c46.715,0,88.727-21.022,118.298-59.189
-          c28.679-37.02,44.474-88.618,44.474-145.282C457.206,127.983,438.182,84.311,405.017,52.467z"/>
-      </svg>
-    ),
-  }
 ];
-
-
-
 
 const TopBar = () => {
   return (
-    <div className="container bg-primary-600 rounded-xl md:rounded-3xl text-white py-1 px-2 sm:px-4 md:px-6 my-3 md:my-5 w-full">
+    <div className="container bg-neutral-900 rounded-xl md:rounded-3xl text-white py-1 px-2 sm:px-4 md:px-6 my-3 md:my-5 w-full">
       {/* Desktop view */}
-      <div className="hidden md:flex gap-4 lg:gap-8 justify-between py-3">
+      <div className="hidden md:flex gap-4 lg:gap-8 items-center justify-between py-3">
         {/* Left side: Email and Phone */}
         <div className="flex items-center flex-wrap gap-3 lg:gap-6">
           <div className="flex items-center gap-2">
-            <Mail className="text-white" size={18} />
-            <span className="font-light text-sm lg:text-base">contact@ndesign.ma</span>
+            <Mail className="text-white" size={38} />
+            <span className="font-light text-display-xs lg:text-base">contact@ndesign.ma</span>
           </div>
           <div className="flex items-center gap-2">
-            <Phone className="text-white" size={18} />
-            <span className="font-light text-sm lg:text-base">+212 6 900 900 75</span>
+            <Phone className="text-white" size={38} />
+            <span className="font-light text-display-xs lg:text-base">+212 6 900 900 75</span>
           </div>
         </div>
 
         {/* Right side: Social Links */}
         <div className="flex gap-2 lg:gap-3">
           {socialLinks.map(({ name, href, svg }) => (
-            <a key={name} href={href} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition">
+            <a 
+              key={name} 
+              href={href} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:scale-110 hover:opacity-80 transition-all duration-300"
+            >
               {svg}
             </a>
           ))}
         </div>
       </div>
 
-      {/* Mobile view */}
-      <div className="md:hidden flex justify-between items-center py-2">
-        {/* Left side: Phone and Email */}
-        <div className="flex items-center gap-3">
-          <a href="tel:+212690090075" className="hover:opacity-70 transition">
-            <Phone className="text-white" size={16} />
+      {/* Mobile view - Enhanced with larger icons and better spacing */}
+      <div className="md:hidden flex justify-between items-center py-3">
+        {/* Left side: Phone and Email with larger icons */}
+        <div className="flex items-center gap-4">
+          <a 
+            href="tel:+212690090075" 
+            className="hover:scale-110 hover:opacity-80 transition-all duration-300 p-1"
+          >
+            <Phone className="text-white" size={24} />
           </a>
-          <a href="mailto:contact@ndesign.ma" className="hover:opacity-70 transition">
-            <Mail className="text-white" size={16} />
+          <a 
+            href="mailto:contact@ndesign.ma" 
+            className="hover:scale-110 hover:opacity-80 transition-all duration-300 p-1"
+          >
+            <Mail className="text-white" size={24} />
           </a>
         </div>
-        {/* Right side: Social icons */}
-        <div className="flex items-center gap-2">
+        
+        {/* Right side: Social icons with larger size and better hover effect */}
+        <div className="flex items-center gap-3">
           {socialLinks.map(({ name, href, svg }) => (
             <a 
               key={name} 
               href={href} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:opacity-70 transition"
+              className="hover:scale-110 hover:opacity-80 transition-all duration-300 p-1"
             >
               {React.cloneElement(svg, {
-                width: 16,
-                height: 16,
+                width: 24,
+                height: 24,
               })}
             </a>
           ))}
