@@ -11,7 +11,7 @@ import PricingPage from "../components/PricingPage";
 
 const IndexPage = () => (
   <Layout>
-    {/* <Seo /> */}
+    <Seo />
 
     <InteriorDesignHero />
 

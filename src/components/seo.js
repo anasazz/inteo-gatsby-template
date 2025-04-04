@@ -27,6 +27,68 @@ function Seo({ lang, meta, title, description, image, url }) {
   const ogImage = image || previewImage;
   const ogUrl = `/${url}` || "";
 
+  // Enhanced Keywords for SEO (French and Arabic)
+  const defaultKeywordsFr = [
+    "design d'intérieur",
+    "intérieurs modernes",
+    "décoration intérieure",
+    "design d'intérieur de luxe",
+    "design d'intérieur marocain",
+    "ndesign.ma",
+    "rénovation de maison",
+    "intérieurs de bureau",
+    "décoration intérieure",
+    "design contemporain",
+    "mobilier sur mesure",
+    "intérieurs résidentiels",
+    "intérieurs commerciaux",
+    "aménagement d'espace",
+    "architecture et design",
+    "stylisme d'intérieur",
+    "rénovation de maison",
+    "meilleurs designers d'intérieur",
+    "services de design d'intérieur abordables",
+    "consultation en design d'intérieur",
+    "idées de design de pièces",
+    "tendances en design d'intérieur",
+    "styling de maison de luxe",
+    "design d'espace commercial",
+    "décor de style marocain",
+    "design d'intérieur en ligne",
+    "designers d'intérieur professionnels"
+  ];
+
+  const defaultKeywordsAr = [
+    "تصميم داخلي",
+    "تصميمات داخلية حديثة",
+    "ديكور المنزل",
+    "تصميم داخلي فاخر",
+    "تصميم داخلي مغربي",
+    "ndesign.ma",
+    "تجديد المنازل",
+    "تصميمات داخلية للمكاتب",
+    "ديكور داخلي",
+    "تصميم معاصر",
+    "أثاث مخصص",
+    "تصميمات داخلية سكنية",
+    "تصميمات داخلية تجارية",
+    "تخطيط المساحات",
+    "هندسة معمارية وتصميم",
+    "تنسيق داخلي",
+    "تجديد المنزل",
+    "أفضل مصممي الديكور الداخلي",
+    "خدمات تصميم داخلي بأسعار معقولة",
+    "استشارة تصميم داخلي",
+    "أفكار تصميم الغرف",
+    "اتجاهات التصميم الداخلي",
+    "تصميم المنزل الفاخر",
+    "تصميم المساحات التجارية",
+    "ديكور على الطراز المغربي",
+    "تصميم داخلي عبر الإنترنت",
+    "مصممي الديكور الداخلي المحترفين"
+  ];
+  const allKeywords = [...defaultKeywordsFr, ...defaultKeywordsAr];
+
   return (
     <Helmet
       htmlAttributes={{
@@ -40,7 +102,7 @@ function Seo({ lang, meta, title, description, image, url }) {
         },
         {
           name: `keywords`,
-          content: `interior design, modern interiors, home decor, luxury interior design, Moroccan interior design, ndesign.ma, home renovation, office interiors, interior decoration, contemporary design, custom furniture, residential interiors, commercial interiors, space planning, architecture and design, interior styling, home makeover`
+          content: allKeywords.join(", "), // Join keywords into a comma-separated string
         },
         {
           property: `og:image`,
@@ -62,33 +124,13 @@ function Seo({ lang, meta, title, description, image, url }) {
           property: `og:url`,
           content: `${siteUrl}${ogUrl}`,
         },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:image`,
-          content: `${siteUrl}${ogImage}`,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
       ].concat(meta)}
     />
   );
 }
 
 Seo.defaultProps = {
-  lang: `en`,
+  lang: `fr`, // Default to French
   meta: [],
   description: ``,
 };
