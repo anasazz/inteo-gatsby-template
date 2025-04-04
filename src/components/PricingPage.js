@@ -22,13 +22,13 @@ const PricingPage = () => {
         {/* Standard Plan */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
-            <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(5€/M²)</div>
+            {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(5€/M²)</div> */}
             <h2 className="text-display-xl font-light tracking-wide">STANDARD</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">
               <li>Plan de mesure</li>
-              <li>Plan de démolition et d'installation</li>
+              {/* <li>Plan de démolition et d'installation</li> */}
               <li>Plan d'aménagement de mobilier</li>
               <li>Suggestions initiales de matériaux</li>
               <li>Consultation de base sur l'agencement</li>
@@ -45,7 +45,7 @@ const PricingPage = () => {
         {/* Optimal Plan */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
-            <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(10€/M²)</div>
+            {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(10€/M²)</div> */}
             <h2 className="text-display-2xl font-light tracking-wide">OPTIMAL</h2>
           </div>
           <div className="md:col-span-1">
@@ -68,16 +68,17 @@ const PricingPage = () => {
         {/* Premium Plan */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
-            <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(20€/M²)</div>
+            {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(20€/M²)</div> */}
             <h2 className="text-display-2xl font-light tracking-wide">PREMIUM</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">
               <li>Ensemble complet "Optimal"</li>
-              <li>Visualisations 3D (3-4 vues par pièce)</li>
+              <li>Visualisations 360 </li>
               <li>Scénarios d'éclairage pour l'ambiance</li>
               <li>Suggestions de mobilier sur mesure</li>
               <li>Conseils de stylisme de décoration</li>
+              <li>Visite virtuelle avec casque VR </li>
             </ul>
           </div>
           <div className="md:col-span-1 flex justify-end items-center">
