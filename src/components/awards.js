@@ -19,8 +19,8 @@ const Awards = () => {
   `);
 
   return (
-    <section className="bg-dark w-full py-10 mx-auto sm:py-16 lg:py-20">
-      <div className="container rounded-xl text-center mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <section className="bg-dark w-full  mx-auto  lg:py-20">
+      <div className="container rounded-xl text-center mx-auto px-4 sm:px-6 lg:px-8 ">
       
         {/* Mobile: Single row with all items */}
         <div className="flex sm:hidden  bg-neutral-900 rounded-3xl py-2">

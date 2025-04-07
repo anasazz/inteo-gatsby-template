@@ -39,28 +39,7 @@ const InteriorDesignHero = () => {
         padding: "2rem 1rem",
       }}
     >
-      {/* Title */}
-      <div 
-        style={{ 
-          display: windowWidth !== null ? "block" : "none", 
-          width: "100%", 
-          maxWidth: "1280px", 
-          margin: "0 auto 2rem auto", 
-          textAlign: "center"
-        }}
-      >
-        <p 
-          style={{ 
-            fontSize: getFontSize(),
-            fontFamily: "Cormorant Garamond",
-            lineHeight: 1.2
-          }}
-        >
-          INTERIOR
-          <br />
-          DESIGN STUDIO
-        </p>
-      </div>
+
 
       {/* Image comparison container */}
       <div

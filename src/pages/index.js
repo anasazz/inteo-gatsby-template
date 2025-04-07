@@ -8,10 +8,13 @@ import Awards from "../components/awards";
 import InteriorDesignHero from "../components/InteriorDesignHero";
 import ServicesPage from "../components/ServicesPage";
 import PricingPage from "../components/PricingPage";
+import VideoVR from "../components/VideoVr";
 
 const IndexPage = () => (
   <Layout>
     <Seo />
+
+    <VideoVR />
 
     <InteriorDesignHero />
 
