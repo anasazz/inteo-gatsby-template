@@ -123,7 +123,7 @@ const ServicesPage = () => {
   };
 
   return (
-    <div id='services' className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white font-serif">
+    <div id='services' className=" bg-gradient-to-b from-black to-gray-900 text-white font-serif">
       {/* Header avec animation améliorée */}
 
       <motion.div 
@@ -168,9 +168,9 @@ const ServicesPage = () => {
     
       </motion.div>
 
-      <main className="container mx-auto px-4 sm:px-6 md:px-8 pb-24 md:pb-32">
+      <main className="container mx-auto px-4 sm:px-6 md:px-8  ">
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 ">
           {services.map((service) => (
             <motion.div
               key={service.id}
@@ -246,7 +246,7 @@ const ServicesPage = () => {
 
                     {/* <Link 
                       to="/contact" 
-                      className="inline-block px-5 py-2 bg-transparent border border-white hover:bg-white hover:text-black transition-colors duration-300 text-sm tracking-wide"
+                      className="inline-block px-5 py-2 bg-transparent border border-white hover:bg-black hover:text-black transition-colors duration-300 text-sm tracking-wide"
                     >
                       En savoir plus
                     </Link> */}

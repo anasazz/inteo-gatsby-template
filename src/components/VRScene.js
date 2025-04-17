@@ -11,6 +11,7 @@ const VRScene = memo(({ selectedScene, sceneKeys }) => {
   const [loadErrors, setLoadErrors] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [thumbnailsVisible, setThumbnailsVisible] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   
   // Camera rotation state
   const [cameraRotation, setCameraRotation] = useState({ x: 0, y: 0 });
@@ -207,6 +208,53 @@ const VRScene = memo(({ selectedScene, sceneKeys }) => {
     };
   }, []);
 
+  // Handle fullscreen functionality
+  const toggleFullscreen = useCallback(() => {
+    const container = sceneRef.current;
+    if (!container) return;
+
+    if (!isFullscreen) {
+      // Enter fullscreen
+      if (container.requestFullscreen) {
+        container.requestFullscreen();
+      } else if (container.webkitRequestFullscreen) {
+        container.webkitRequestFullscreen();
+      } else if (container.msRequestFullscreen) {
+        container.msRequestFullscreen();
+      }
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  }, [isFullscreen]);
+
+  // Track fullscreen changes
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(
+        document.fullscreenElement || 
+        document.webkitFullscreenElement || 
+        document.msFullscreenElement
+      );
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('msfullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
   const loadScene = useCallback(async (sceneKey) => {
     if (!isMounted.current) return;
     console.log(`Loading scene: ${sceneKey}`);
@@ -330,6 +378,32 @@ const VRScene = memo(({ selectedScene, sceneKeys }) => {
     <div className="w-full h-full relative bg-black overflow-hidden" ref={sceneRef}>
       {/* Control buttons */}
       <div className="absolute top-4 right-4 z-30 flex gap-2">
+        {/* Fullscreen toggle button - Now visible on both mobile and desktop */}
+        <button 
+          onClick={toggleFullscreen}
+          className={`bg-gray-900/80 text-white p-2 rounded-full shadow-lg hover:bg-gray-800 transition-colors ${
+            isFullscreen ? 'ring-2 ring-blue-400' : ''
+          }`}
+          aria-label={isFullscreen ? "Sortir du plein écran" : "Plein écran"}
+          type="button"
+        >
+          {!isFullscreen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <polyline points="4 14 10 14 10 20"></polyline>
+  <polyline points="20 10 14 10 14 4"></polyline>
+  <line x1="14" y1="10" x2="21" y2="3"></line>
+  <line x1="3" y1="21" x2="10" y2="14"></line>
+</svg>
+          )}
+        </button>
+        
         {/* Auto-rotate toggle */}
         <button 
           onClick={toggleAutoRotate}
@@ -387,6 +461,26 @@ const VRScene = memo(({ selectedScene, sceneKeys }) => {
           <p className="text-sm">Balayez pour regarder autour de vous</p>
         </div>
       )}
+
+      {/* Fullscreen button for mobile - Fixed position at bottom of screen */}
+      {/* <div className="md:hidden fixed bottom-24 right-4 z-50">
+        <button 
+          onClick={toggleFullscreen}
+          className="bg-blue-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center"
+          aria-label={isFullscreen ? "Sortir du plein écran" : "Plein écran"}
+          type="button"
+        >
+          {isFullscreen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3m-18 0h3a2 2 0 0 1 2 2v3" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 8V5a2 2 0 0 1 2-2h3m13 0h3a2 2 0 0 1 2 2v3m0 13v3a2 2 0 0 1-2 2h-3m-13 0H5a2 2 0 0 1-2-2v-3" />
+            </svg>
+          )}
+        </button>
+      </div> */}
 
       {/* Preview thumbnails containers - Made always visible on mobile */}
       {/* Mobile: Thumbnail bar at bottom - ALWAYS visible */}
@@ -486,6 +580,23 @@ const VRScene = memo(({ selectedScene, sceneKeys }) => {
           </ul>
         </div>
       )}
+
+      {/* Enhanced fullscreen-specific UI */}
+      {/* {isFullscreen && (
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm z-40 flex items-center">
+          <span className="mr-1">Mode Plein Écran</span>
+          <button 
+            onClick={toggleFullscreen}
+            className="ml-2 p-1 rounded-full hover:bg-gray-800/70"
+            aria-label="Sortir du plein écran"
+            type="button"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3m-18 0h3a2 2 0 0 1 2 2v3" />
+            </svg>
+          </button>
+        </div>
+      )} */}
 
       {/* Custom scrollbar styles */}
       <style jsx global>{`

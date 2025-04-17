@@ -49,7 +49,7 @@ const LandingHero = () => {
         <div className={`w-full md:w-1/2 h-full relative transition-all duration-1000 ${isLoaded ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
           <div className="absolute top-0 right-0 w-full h-full overflow-hidden">
             <video 
-              className="w-2/3 h-full object-cover float-start bg-white rounded-3xl"
+              className="w-2/3 h-full object-cover float-start bg-black rounded-3xl"
               autoPlay 
               muted 
               loop 
@@ -72,7 +72,7 @@ const LandingHero = () => {
         <div className="flex flex-col items-center">
           <span className="text-sm text-gray-400 mb-2">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center p-1">
-            <div className="w-1 h-2 bg-white rounded-full animate-bounce"></div>
+            <div className="w-1 h-2 bg-black rounded-full animate-bounce"></div>
           </div>
         </div>
       </div>

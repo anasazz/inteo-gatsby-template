@@ -23,7 +23,7 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
             {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(5€/M²)</div> */}
-            <h2 className="text-display-xl md:text-display-2xl  font-light tracking-wide">STANDARD</h2>
+            <h2 className="  text-display-xl md:text-display-xl  font-light tracking-wide">STANDARD</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">
@@ -46,7 +46,7 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
             {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(10€/M²)</div> */}
-            <h2 className="text-display-xl md:text-display-2xl  font-light tracking-wide">OPTIMAL</h2>
+            <h2 className="text-display-xl md:text-display-xl  font-light tracking-wide">OPTIMAL</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">
@@ -69,7 +69,7 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12 border-b border-gray-700">
           <div className="md:col-span-1">
             {/* <div className="text-[#d3f030] mb-3 text-xl text-display-lg">(20€/M²)</div> */}
-            <h2 className="text-display-xl md:text-display-2xl font-light tracking-wide">PREMIUM</h2>
+            <h2 className="text-display-xl md:text-display-xl font-light tracking-wide">PREMIUM</h2>
           </div>
           <div className="md:col-span-1">
             <ul className="list-disc pl-6 space-y-2 text-lg">

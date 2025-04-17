@@ -114,7 +114,7 @@ const Hero = () => {
 
       {/* VR Scene Container */}
       <div id="vrSceneContainer" className="relative overflow-hidden rounded-lg mx-auto mb-8 shadow-2xl max-w-7xl">
-        <div className="w-full h-[500px] md:h-[550px] lg:h-[700px] relative rounded-lg overflow-hidden">
+        <div className="w-full h-[600px] md:h-[650px] lg:h-[800px] relative rounded-lg overflow-hidden">
           <VRScene 
             selectedScene={selectedScene} 
             selectedAsset={selectedAsset}

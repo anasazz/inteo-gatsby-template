@@ -34,7 +34,7 @@ const ContactPage = () => {
       {/* Header */}
       <main className="container mx-auto px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div className="flex items-center">
-          <h1 className="text-[#FFFF00] text-[4rem] lg:text-[9rem] md:text-[9rem]   font-light leading-[0.9] tracking-tight">
+          <h1 className="text-[#FFFF00] text-[4rem] lg:text-[6rem] md:text-[9rem]   font-light leading-[0.9] tracking-tight">
             PRENEZ<br />CONTACT
           </h1>
         </div>
